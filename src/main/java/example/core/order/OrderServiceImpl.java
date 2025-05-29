@@ -1,15 +1,16 @@
 package example.core.order;
 
+import example.core.annotation.MainDiscountPolicy;
 import example.core.discount.DiscountPolicy;
-import example.core.discount.FixDiscountPolicy;
-import example.core.discount.RateDiscountPolicy;
 import example.core.member.Member;
 import example.core.member.MemberRepository;
-import example.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
+
+//@RequiredArgsConstructor
 @Component
 public class OrderServiceImpl implements OrderService{
 
@@ -25,11 +26,23 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-    }
+//    롬복이 만들어줌
+@Autowired
+public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+    this.memberRepository = memberRepository;
+    this.discountPolicy = discountPolicy;
+}
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
+//    위에꺼를 밑에꺼로
+//    @Autowired
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy rateDiscountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = rateDiscountPolicy;
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {

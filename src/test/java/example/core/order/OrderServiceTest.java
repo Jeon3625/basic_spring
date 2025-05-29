@@ -1,10 +1,8 @@
 package example.core.order;
 
 import example.core.AppConfig;
-import example.core.member.Grade;
-import example.core.member.Member;
-import example.core.member.MemberService;
-import example.core.member.MemberServiceImpl;
+import example.core.discount.RateDiscountPolicy;
+import example.core.member.*;
 import example.core.order.OrderService;
 import example.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
@@ -30,8 +28,10 @@ public class OrderServiceTest {
         Member member = new Member(memberId, "memberA", Grade.VIP);
         memberService.join(member);
 
+
         Order order = orderService.createOrder(memberId,"itemA",1000);
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(100);
     }
+
 
 }

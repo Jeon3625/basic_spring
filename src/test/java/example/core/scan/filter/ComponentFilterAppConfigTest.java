@@ -1,4 +1,4 @@
-package example.core.component.filter;
+package example.core.scan.filter;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

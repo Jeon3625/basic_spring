@@ -1,6 +1,4 @@
-package example.core.component.filter;
-
-import org.springframework.stereotype.Indexed;
+package example.core.scan.filter;
 
 import java.lang.annotation.*;
 

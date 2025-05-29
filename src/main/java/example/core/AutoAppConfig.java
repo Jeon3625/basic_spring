@@ -10,7 +10,7 @@ import org.springframework.context.annotation.FilterType;
 // 기존의 AppConfig랑 다른점은 @Bean으로 등록된 클래스가 하나도없다.
 @Configuration
 @ComponentScan(
-        basePackages =  "example.core.member",
+//        basePackages =  "example.core.member",
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )
 public class AutoAppConfig {
